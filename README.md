@@ -47,8 +47,24 @@ RegisterNumber:  212221230048
 */
 
 /*half subractor*/
+module HalfSubractor(a,b,diff,borr);
+input a,b;
+output diff,borr;
+wire x;
+xor (diff,a,b);
+not(x,a);
+and(borr,x,b);
+endmodule
 
 /*full subractor*/
+module FullSubractor(A,B,C,diff,borrow);
+input A,B,C;
+output diff,borrow;
+wire p;
+assign diff = ((A^B)^C);
+not(p,A);
+assign borrow = ((p&B)|(p&C)|(B&C));
+endmodule
 ```
 ## Output:
 ## Half Subractor:
